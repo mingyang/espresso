@@ -23,6 +23,7 @@
 */
 #include <tcl.h>
 #include "utils.h"
+#include "version.h"
 
 #ifdef BOND_CONSTRAINT
 #ifdef ROTATION
@@ -93,7 +94,7 @@
 
 int tclcallback_version(Tcl_Interp *interp)
 {
-  Tcl_AppendResult(interp, PACKAGE_NAME ": " PACKAGE_VERSION, (char *) NULL);
+  Tcl_AppendResult(interp, PACKAGE_NAME ": ", _esp_ver_string, (char *) NULL);
   return (TCL_OK);
 }
 

@@ -21,7 +21,7 @@ SUBDIRS = . scripts tools testsuite doc
 # by any other means
 EXTRA_DIST = Makefile darwinlink.sh \
 	autogen.sh configure-ac samples cmake CMakeLists.txt \
-        acconfig.h.cmakein packages Espresso \
+        acconfig.h.cmakein packages Espresso genversion.sh\
 	$(extra)
 
 # List headers that are not used by the program here
@@ -99,6 +99,7 @@ Espresso_bin_SOURCES = \
 	statistics_fluid.c statistics_fluid.h \
 	lb-boundaries.c lb-boundaries.h \
 	utils.c utils.h \
+	version.c version.h \
 	angle.h \
         pwdist.h \
 	angledist.h \
@@ -253,4 +254,11 @@ endif
 test: check
 mostclean: mostlyclean
 docu: doc
+
+
+##################################################
+# Version header
+##################################################
+version.c: FORCE
+	$(top_srcdir)/genversion.sh @VERSION@ $(top_srcdir)
 
